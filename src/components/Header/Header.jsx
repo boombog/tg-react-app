@@ -9,6 +9,7 @@ import {
   MenuItem,
   Box
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user, onClose } = useTelegram();
@@ -22,9 +23,9 @@ const Header = () => {
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
             <MenuList>
-              <MenuItem>Профиль</MenuItem>
-              <MenuItem>FAQ</MenuItem>
-              <MenuItem>О нас</MenuItem>
+              <MenuItem><Link className="link" to={"/"}>Профиль</Link></MenuItem>
+              <MenuItem><Link className="link" to={"/faq"}>FAQ</Link></MenuItem>
+              <MenuItem><Link className="link" to={"/"}>О нас</Link></MenuItem>
               <MenuItem onClick={onClose}>Выйти</MenuItem>
             </MenuList>
           </div>

@@ -20,6 +20,7 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<MainPage/>} />
+          <Route path='/faq' element={<MainPage/>} />
         </Routes>
       </div>
     </ChakraProvider>
