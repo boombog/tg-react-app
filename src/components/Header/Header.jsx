@@ -17,17 +17,17 @@ const Header = () => {
     <Box>
       <Menu>
         {({ isOpen }) => (
-          <>
-            <MenuButton bg={"var(--tg-theme-button-color)"} color={"var(--tg-theme-button-text-color)"} as={Button}>
+          <div className="tgTheme">
+            <MenuButton as={Button}>
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
-            <MenuList bg={"var(--tg-theme-button-color)"} color={"var(--tg-theme-button-text-color)"}>
+            <MenuList>
               <MenuItem>Профиль</MenuItem>
               <MenuItem>FAQ</MenuItem>
               <MenuItem>О нас</MenuItem>
               <MenuItem onClick={onClose}>Выйти</MenuItem>
             </MenuList>
-          </>
+          </div>
         )}
       </Menu>
       <span className={"username"}>{user?.username}</span>
