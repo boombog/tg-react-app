@@ -11,7 +11,7 @@ const FAQBlock = ({title, text}) => {
   return (
     <AccordionItem bg={"var(--tg-theme-bg-color)"} color={"var(--tg-theme-text-color)"}>
       <h2>
-        <AccordionButton>
+        <AccordionButton bg={"var(--tg-theme-bg-color)"}>
           <Box as="span" flex="1" textAlign="left" color={"var(--tg-theme-text-color)"}>
             {title}
           </Box>
