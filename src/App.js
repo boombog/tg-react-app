@@ -5,6 +5,7 @@ import {Route, Routes} from 'react-router-dom'
 import './App.css';
 import MainPage from './components/MainPage/MainPage';
 import { ChakraProvider } from '@chakra-ui/react'
+import FAQ from './components/FAQ/FAQ';
 
 function App() {
   const {tg} = useTelegram();
@@ -20,7 +21,7 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<MainPage/>} />
-          <Route path='/faq' element={<MainPage/>} />
+          <Route path='/faq' element={<FAQ/>} />
         </Routes>
       </div>
     </ChakraProvider>

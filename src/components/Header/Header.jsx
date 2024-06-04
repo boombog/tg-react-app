@@ -23,7 +23,7 @@ const Header = () => {
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
             <MenuList>
-              <MenuItem><Link className="link" to={"/"}>Профиль</Link></MenuItem>
+              <MenuItem><Link className="link" to={"/"}>Главная</Link></MenuItem>
               <MenuItem><Link className="link" to={"/faq"}>FAQ</Link></MenuItem>
               <MenuItem><Link className="link" to={"/"}>О нас</Link></MenuItem>
               <MenuItem onClick={onClose}>Выйти</MenuItem>
