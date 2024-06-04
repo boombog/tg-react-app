@@ -14,7 +14,7 @@ const Header = () => {
   const { user, onClose } = useTelegram();
 
   return (
-    <Box>
+    <Box className="MainHeader">
       <Menu>
         {({ isOpen }) => (
           <div>
