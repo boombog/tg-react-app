@@ -21,7 +21,7 @@ const Header = () => {
             <MenuButton bg={"var(--tg-theme-button-color)"} color={"var(--tg-theme-button-text-color)"} as={Button}>
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
-            <MenuList>
+            <MenuList bg={"var(--tg-theme-button-color)"} color={"var(--tg-theme-button-text-color)"}>
               <MenuItem>Профиль</MenuItem>
               <MenuItem>FAQ</MenuItem>
               <MenuItem>О нас</MenuItem>
