@@ -2,7 +2,7 @@ import React from "react";
 import {
   Accordion
 } from '@chakra-ui/react'
-import FAQBlock from "../FAQBlock/FAQBlock";
+import FAQBlock from "../../components/FAQBlock/FAQBlock";
 
 const FAQ = () => {
   return (

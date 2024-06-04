@@ -3,9 +3,9 @@ import {useTelegram} from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
 import './App.css';
-import MainPage from './components/MainPage/MainPage';
+import MainPage from './pages/MainPage/MainPage';
 import { ChakraProvider } from '@chakra-ui/react'
-import FAQ from './components/FAQ/FAQ';
+import FAQ from './pages/FAQ/FAQ';
 
 function App() {
   const {tg} = useTelegram();
@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     tg.ready();
   }, [tg])
-
 
   return (
     <ChakraProvider>
