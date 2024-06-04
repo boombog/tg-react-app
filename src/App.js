@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
 import './App.css';
 import MainPage from './components/MainPage/MainPage';
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const {tg} = useTelegram();
@@ -14,12 +15,14 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route index element={<MainPage/>} />
-      </Routes>
-    </div>
+    <ChakraProvider>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route index element={<MainPage/>} />
+        </Routes>
+      </div>
+    </ChakraProvider>
   );
 }
 
