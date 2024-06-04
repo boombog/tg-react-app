@@ -21,11 +21,11 @@ const Header = () => {
             <MenuButton as={Button}>
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
-            <MenuList className="tgTheme">
-              <MenuItem className="tgTheme">Профиль</MenuItem>
-              <MenuItem className="tgTheme">FAQ</MenuItem>
-              <MenuItem className="tgTheme">О нас</MenuItem>
-              <MenuItem className="tgTheme" onClick={onClose}>Выйти</MenuItem>
+            <MenuList>
+              <MenuItem>Профиль</MenuItem>
+              <MenuItem>FAQ</MenuItem>
+              <MenuItem>О нас</MenuItem>
+              <MenuItem onClick={onClose}>Выйти</MenuItem>
             </MenuList>
           </div>
         )}
