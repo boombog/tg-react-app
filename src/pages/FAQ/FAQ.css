@@ -1,0 +1,5 @@
+.FaqMain{
+    width: 100%;
+    background: var(--tg-theme-bg-color);;
+    height: calc(var(--tg-viewport-height) - 64px);
+}
