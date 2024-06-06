@@ -1,6 +1,6 @@
 .mainPage{
     width: 100%;
-    height: 100%;
+    height: calc(var(--tg-viewport-height) - 64px);
     padding: 0 10px;
     display: flex;
     flex-direction: column;
