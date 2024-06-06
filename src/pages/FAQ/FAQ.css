@@ -1,5 +1,7 @@
 .FaqMain{
     width: 100%;
+    display: flex;
+    flex-direction: column;
     background: var(--tg-theme-bg-color);;
     height: calc(var(--tg-viewport-height) - 64px);
 }
