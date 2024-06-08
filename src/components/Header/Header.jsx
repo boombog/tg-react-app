@@ -25,7 +25,7 @@ const Header = () => {
             <MenuButton as={Button}>
               {isOpen ? "Закрыть" : "Открыть"}
             </MenuButton>
-            <MenuList>
+            <MenuList width={"calc(100vw - 20px)"} m={"10px"}>
               <MenuItem><Link className="link" to={"/"}>Главная</Link></MenuItem>
               <MenuItem><Link className="link" to={"/faq"}>FAQ</Link></MenuItem>
               {data.role === "admin" ? <MenuItem><Link className="link" to={"/admin"}>AdminPanel</Link></MenuItem> : null}
