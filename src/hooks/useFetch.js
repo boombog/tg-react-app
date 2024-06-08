@@ -9,7 +9,11 @@ const useFetchData = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        });
         setData(response.data);
       } catch (error) {
         setError('Error fetching data');

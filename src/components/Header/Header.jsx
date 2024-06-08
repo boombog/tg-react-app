@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const TESTID = 666666;
   const { user, onClose } = useTelegram();
-  const { data, loading } = useFetchData(`http://localhost:3001/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data, loading, error } = useFetchData(`https://6fc7-178-206-118-118.ngrok-free.app/api/getuser/${(user ? user.id : TESTID)}`);
 
   return (
     <Box className="MainHeader">
@@ -28,7 +28,7 @@ const Header = () => {
             <MenuList width={"calc(100vw - 20px)"} m={"10px"}>
               <MenuItem><Link className="link" to={"/"}>Главная</Link></MenuItem>
               <MenuItem><Link className="link" to={"/faq"}>FAQ</Link></MenuItem>
-              {data.role === "admin" ? <MenuItem><Link className="link" to={"/admin"}>AdminPanel</Link></MenuItem> : null}
+              {data?.role === "admin" ? <MenuItem><Link className="link" to={"/admin"}>AdminPanel</Link></MenuItem> : null}
               <MenuItem><Link className="link" to={"/contact"}>Написать в поддержку</Link></MenuItem>
               <MenuItem onClick={onClose}>Выйти</MenuItem>
             </MenuList>
