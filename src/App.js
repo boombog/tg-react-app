@@ -13,7 +13,7 @@ import Contact from './pages/Contact/Contact';
 function App() {
   const {tg, user} = useTelegram();
   const TESTID = 666666;
-  const {data} = useFetchData(`http://localhost:3001/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data } = useFetchData(`http://localhost:3001/api/getuser/${(user ? user.id : TESTID)}`);
 
   useEffect(() => {
     tg.ready();

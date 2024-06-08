@@ -35,7 +35,7 @@ const Header = () => {
           </div>
         )}
       </Menu>
-      <span className={"username"}>{user?.id}</span>
+      <span className={"username"}>{user?.username}</span>
       <span className="data">{loading ? <>Загрузка...</> : data.first_name}</span>
     </Box>
   );
