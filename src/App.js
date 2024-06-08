@@ -6,9 +6,14 @@ import './App.css';
 import MainPage from './pages/MainPage/MainPage';
 import { ChakraProvider } from '@chakra-ui/react'
 import FAQ from './pages/FAQ/FAQ';
+import AdminPanel from './pages/AdminPanel/AdminPanel';
+import useFetchData from './hooks/useFetch';
+import Contact from './pages/Contact/Contact';
 
 function App() {
-  const {tg} = useTelegram();
+  const {tg, user} = useTelegram();
+  const TESTID = 666666;
+  const {data} = useFetchData(`http://localhost:3001/api/getuser/${(user ? user.id : TESTID)}`);
 
   useEffect(() => {
     tg.ready();
@@ -21,6 +26,9 @@ function App() {
         <Routes>
           <Route index element={<MainPage/>} />
           <Route path='/faq' element={<FAQ/>} />
+          <Route path='/contact' element={<Contact/>} />
+          {data.role === "admin" ? <Route path='/admin' element={<AdminPanel/>}/> : null}
+          <Route element={<div>Страница не найдена</div>}/>
         </Routes>
       </div>
     </ChakraProvider>
