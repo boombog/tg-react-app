@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const TESTID = 666666;
   const { user, onClose } = useTelegram();
-  const { data, loading} = useFetchData(`https://6fc7-178-206-118-118.ngrok-free.app/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data, loading} = useFetchData(`https://ebab-178-206-118-118.ngrok-free.app/api/getuser/${(user ? user.id : TESTID)}`);
 
   return (
     <Box className="MainHeader">
