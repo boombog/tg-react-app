@@ -26,7 +26,7 @@ const Contact = () => {
       message: message,
       login: user?.username || "testmode",
       userID: user?.id || "111111",
-      queryId
+      queryId: queryId
     }
     axios.post(`${fetchURL}/api/sendrequest`, JSON.stringify(data), {
         headers: {
