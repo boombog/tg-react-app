@@ -30,7 +30,7 @@ const Contact = () => {
       userID,
       queryId
     }
-    axios.post(`${fetchURL}/api/sendrequest`, data, {
+    axios.post(`${fetchURL}/api/sendrequest`, JSON.stringify(data), {
         headers: {
             'Content-Type': 'application/json'
         }
