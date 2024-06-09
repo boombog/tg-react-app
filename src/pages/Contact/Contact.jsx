@@ -28,6 +28,11 @@ const Contact = () => {
       },
       body: JSON.stringify(data)
     })
+    .then(response => response.json())
+    .then(data => console.log("Успешно отправлено", data))
+    .catch((error) => {
+      console.error("Ошибка отправки: ", error)
+    })
   }, [message, user?.username, user?.id, queryId, fetchURL]);
 
   useEffect(() => {
