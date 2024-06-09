@@ -20,11 +20,10 @@ const Contact = () => {
     const data = {
       message: message,
       login: user?.username || "testmode",
-      userID: user?.id || "666666",
       queryId: queryId,
     };
     axios
-      .post(`${fetchURL}/api/sendrequest`, JSON.stringify(data), {
+      .post(`${fetchURL}/api/sendrequest/${user?.id || "666666"}`, JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
         },
