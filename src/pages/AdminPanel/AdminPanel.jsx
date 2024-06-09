@@ -15,7 +15,7 @@ import {
 
 
 const AdminPanel = () => {
-  const { tg, fetchURL } = useTelegram();
+  const { tg, fetchURL, user } = useTelegram();
   const { data, loading, error } = useFetchData(
     `${fetchURL}/api/getusers`
   );
@@ -24,30 +24,30 @@ const AdminPanel = () => {
   }, [tg]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Card><CardHeader><Heading size={"md"}>Загрузка...</Heading></CardHeader></Card>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Ошибка загрузки: {error.message}</div>;
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <Heading size="md">Заявки пользователей</Heading>
+    <Card bg={"var(--tg-theme-bg-color)"}>
+      <CardHeader bg={"var(--tg-theme-bg-color)"}>
+        <Heading color={"var(--tg-theme-text-color)"} size="md">Список пользователей чат-бота</Heading>
       </CardHeader>
 
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
+      <CardBody bg={"var(--tg-theme-bg-color)"}>
+        <Stack divider={<StackDivider color={"var(--tg-theme-text-color)"} />} spacing="4">
           {data && data.length > 0 ? (
             data.map((item) => {
               return (
-                <Box>
-                  <Heading size="xs" textTransform="uppercase">
-                    {item.username}
+                <Box bg={"var(--tg-theme-bg-color)"}>
+                  <Heading color={"var(--tg-theme-text-color)"} size="xs" textTransform="uppercase">
+                    {item.first_name} {`(${item.role})`} {item.user_id === user?.id ? "Вы" : ""}
                   </Heading>
-                  <Text pt="2" fontSize="sm">
-                    {item.role}, Синхронизирован с аккаунтом: {item.accLogin}
+                  <Text color={"var(--tg-theme-text-color)"} pt="2" fontSize="sm">
+                    Синхронизирован с аккаунтом: {item.accLogin} {`(${item.phone})`}
                   </Text>
                 </Box>
               );
