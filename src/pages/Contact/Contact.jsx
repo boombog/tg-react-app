@@ -22,17 +22,15 @@ const Contact = () => {
   }
 
   const onSendData = useCallback(() => {
-    const login = user?.username || "testmode"
-    const userID = user?.id || "111111"
     const data = {
-      message,
-      login,
-      userID,
+      message: message,
+      login: user?.username || "testmode",
+      userID: user?.id || "111111",
       queryId
     }
     axios.post(`${fetchURL}/api/sendrequest`, JSON.stringify(data), {
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         }
     }).then(response => {
         console.log('Успешно отправлено:', response.data);
