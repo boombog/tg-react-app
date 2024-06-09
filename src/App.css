@@ -12,3 +12,13 @@ body{
   height: 100vh;
   background: var(--tg-theme-bg-color);
 }
+
+.no-scrollbar {
+  overflow: auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}

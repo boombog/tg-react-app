@@ -35,7 +35,7 @@ const Header = () => {
           </div>
         )}
       </Menu>
-      <span className={"username"}>{user?.username}</span>
+      <span className={"username"}>{user?.username} {`(${data?.role})`}</span>
       <span className="error">{error ? error : ""}</span>
       <span className="data">{loading ? <>Загрузка...</> : data?.first_name}</span>
     </Box>

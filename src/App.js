@@ -21,7 +21,7 @@ function App() {
 
   return (
     <ChakraProvider>
-      <div className="App">
+      <div className="App no-scrollbar">
         <Header />
         <Routes>
           <Route index element={<MainPage/>} />

@@ -17,7 +17,7 @@ import {
 const AdminPanel = () => {
   const { tg, fetchURL } = useTelegram();
   const { data, loading, error } = useFetchData(
-    `${fetchURL}/api/getallreports`
+    `${fetchURL}/api/getusers`
   );
   useEffect(() => {
     tg.MainButton.hide();
@@ -47,7 +47,7 @@ const AdminPanel = () => {
                     {item.username}
                   </Heading>
                   <Text pt="2" fontSize="sm">
-                    {item.message}
+                    {item.role}, Синхронизирован с аккаунтом: {item.accLogin}
                   </Text>
                 </Box>
               );
