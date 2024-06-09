@@ -5,14 +5,13 @@ import {
   Textarea,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import "./Contact.css";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useEffect, useState, useCallback } from "react";
 
 const Contact = () => {
-  const { tg, user, queryId, fetchURL } = useTelegram();
+  const { tg, user, queryId, fetchURL } = useTelegram(); 
   const [message, setMessage] = useState("");
 
   const onSendData = useCallback(() => {
@@ -20,27 +19,22 @@ const Contact = () => {
       message: message,
       login: user?.username || "testmode",
       userID: user?.id || "111111",
-      queryId: queryId,
-    };
-    axios
-      .post(`${fetchURL}/api/sendrequest`, JSON.stringify(data), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log("Успешно отправлено:", response.data);
-      })
-      .catch((error) => {
-        console.error("Ошибка отправки:", error);
-      });
+      queryId: queryId
+    }
+    fetch(`${fetchURL}/api/sendrequest`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
   }, [message, user?.username, user?.id, queryId, fetchURL]);
 
   useEffect(() => {
-    tg.onEvent("MainButtonClicked", onSendData);
+    tg.onEvent('MainButtonClicked', onSendData);
     return () => {
-      tg.offEvent("MainButtonClicked", onSendData);
-    };
+      tg.offEvent('MainButtonClicked', onSendData);
+    }
   }, [tg, onSendData]);
 
   function validateMessage(value) {
@@ -56,19 +50,18 @@ const Contact = () => {
 
   useEffect(() => {
     tg.MainButton.setParams({
-      text: "Отправить данные",
+      text: "Отправить данные"
     });
   }, [tg]);
 
   return (
-    <Formik initialValues={{ message: "" }} onSubmit={onSendData}>
+    <Formik
+      initialValues={{ message: "" }}
+      onSubmit={onSendData}
+    >
       {({ setFieldValue }) => (
         <Form className="MainForm">
-          <Text
-            fontSize="3xl"
-            align="center"
-            color={"var(--tg-theme-text-color)"}
-          >
+          <Text fontSize="3xl" align="center" color={"var(--tg-theme-text-color)"}>
             Опишите вашу проблему
           </Text>
           <Field name="message" validate={validateMessage}>
@@ -76,9 +69,7 @@ const Contact = () => {
               <FormControl
                 isInvalid={form.errors.message && form.touched.message}
               >
-                <FormLabel color={"var(--tg-theme-text-color)"}>
-                  Сообщение
-                </FormLabel>
+                <FormLabel color={"var(--tg-theme-text-color)"}>Сообщение</FormLabel>
                 <Textarea
                   {...field}
                   value={message}
