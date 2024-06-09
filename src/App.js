@@ -11,9 +11,9 @@ import useFetchData from './hooks/useFetch';
 import Contact from './pages/Contact/Contact';
 
 function App() {
-  const {tg, user} = useTelegram();
+  const {tg, user, fetchURL} = useTelegram();
   const TESTID = 666666;
-  const { data } = useFetchData(`http://localhost:3001/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data } = useFetchData(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
 
   useEffect(() => {
     tg.ready();

@@ -14,8 +14,8 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const TESTID = 666666;
-  const { user, onClose } = useTelegram();
-  const { data, loading} = useFetchData(`https://ebab-178-206-118-118.ngrok-free.app/api/getuser/${(user ? user.id : TESTID)}`);
+  const { user, onClose, fetchURL } = useTelegram();
+  const { data, loading, error } = useFetchData(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
 
   return (
     <Box className="MainHeader">
@@ -36,7 +36,8 @@ const Header = () => {
         )}
       </Menu>
       <span className={"username"}>{user?.username}</span>
-      <span className="data">{loading ? <>Загрузка...</> : data.first_name}</span>
+      <span className="error">{error ? error : ""}</span>
+      <span className="data">{loading ? <>Загрузка...</> : data?.first_name}</span>
     </Box>
   );
 };
