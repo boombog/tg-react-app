@@ -1,10 +1,17 @@
-import React from "react";
+import { useEffect } from "react";
+import { useTelegram } from "../../hooks/useTelegram";
 import {
   Accordion
 } from '@chakra-ui/react'
 import FAQBlock from "../../components/FAQBlock/FAQBlock";
 
 const FAQ = () => {
+
+  const {tg} = useTelegram()
+  useEffect(() => {
+    tg.MainButton.hide()
+  }, [tg])
+
   return (
     <div className="FaqMain">
       <Accordion allowToggle bg={"var(--tg-theme-bg-color)"}>
