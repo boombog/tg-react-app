@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const useFetchData = (url) => {
   const [data, setData] = useState([]);
@@ -9,15 +8,23 @@ const useFetchData = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url, {
+        const response = await fetch(url, {
+          method: 'GET',
           headers: {
+            'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
           }
         });
-        setData(response.data);
-        console.log(response)
+
+        if (!response.ok) {
+          throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+
+        const responseData = await response.json();
+        setData(responseData);
+        console.log(responseData);
       } catch (error) {
-        setError('Ошибка загрузки данных', error);
+        setError('Ошибка загрузки данных: ' + error.message);
         console.log('Ошибка загрузки данных:', error);
       } finally {
         setLoading(false);
