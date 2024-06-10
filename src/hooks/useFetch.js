@@ -16,8 +16,8 @@ const useFetchData = (url) => {
         });
         setData(response.data);
       } catch (error) {
-        setError('Ошибка загрузки данных');
-        console.error('Ошибка загрузки данных:', error);
+        setError('Ошибка загрузки данных', error);
+        console.log('Ошибка загрузки данных:', error);
       } finally {
         setLoading(false);
       }
