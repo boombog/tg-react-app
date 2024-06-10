@@ -9,7 +9,11 @@ const useFetchData = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          }
+        });
         setData(response.data);
         console.log(response)
       } catch (error) {
