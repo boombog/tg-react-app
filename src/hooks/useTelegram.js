@@ -1,5 +1,5 @@
 const tg = window.Telegram.WebApp;
-const fetchURL = "https://1ea1-178-206-118-118.ngrok-free.app"
+const fetchURL = "http://141.8.198.131:3001"
 
 export function useTelegram() {
 
