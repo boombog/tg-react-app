@@ -23,11 +23,11 @@ const Header = () => {
         {({ isOpen }) => (
           <div>
             <MenuButton as={Button}>
-              {isOpen ? "Закрыть" : "Открыть"}
+              {isOpen ? "Закрыть меню" : "Открыть меню"}
             </MenuButton>
             <MenuList width={"calc(100vw - 20px)"} m={"10px"}>
               <MenuItem><Link className="link" to={"/"}>Главная</Link></MenuItem>
-              <MenuItem><Link className="link" to={"/faq"}>FAQ</Link></MenuItem>
+              <MenuItem><Link className="link" to={"/faq"}>ЧаВо</Link></MenuItem>
               {data?.role === "admin" ? <MenuItem><Link className="link" to={"/admin"}>AdminPanel</Link></MenuItem> : null}
               <MenuItem><Link className="link" to={"/contact"}>Написать в поддержку</Link></MenuItem>
               <MenuItem onClick={onClose}>Выйти</MenuItem>
