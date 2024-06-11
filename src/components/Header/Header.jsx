@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 import { useTelegram } from "../../hooks/useTelegram";
-import useFetchData from "../../hooks/useFetch";
+import useFetchGet from "../../hooks/useFetchGet";
 import "./Header.css";
 import {
   Menu,
@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const TESTID = 666666;
   const { user, onClose, fetchURL } = useTelegram();
-  const { data, loading, error } = useFetchData(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data, loading, error } = useFetchGet(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
 
   return (
     <Box className="MainHeader">

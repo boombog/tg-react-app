@@ -7,13 +7,13 @@ import MainPage from './pages/MainPage/MainPage';
 import { ChakraProvider } from '@chakra-ui/react'
 import FAQ from './pages/FAQ/FAQ';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
-import useFetchData from './hooks/useFetch';
+import useFetchGet from './hooks/useFetchGet';
 import Contact from './pages/Contact/Contact';
 
 function App() {
   const {tg, user, fetchURL} = useTelegram();
   const TESTID = 666666;
-  const { data } = useFetchData(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
+  const { data } = useFetchGet(`${fetchURL}/api/getuser/${(user ? user.id : TESTID)}`);
 
   useEffect(() => {
     tg.ready();

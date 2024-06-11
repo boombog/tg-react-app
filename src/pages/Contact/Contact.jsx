@@ -22,10 +22,10 @@ const Contact = () => {
       login: user?.username || "testmode",
       queryId: queryId,
     };
-    axios
-      .post(`${fetchURL}/api/sendrequest/${user?.id || "666666"}`, JSON.stringify(data), {
+    axios.post(`${fetchURL}/api/sendrequest/${user?.id || "666666"}`, JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
+          'ngrok-skip-browser-warning': 'true'
         },
       })
       .then(response => response.json())

@@ -1,7 +1,7 @@
 import "./AdminPanel.css";
 import { useEffect } from "react";
 import { useTelegram } from "../../hooks/useTelegram";
-import useFetchData from "../../hooks/useFetch";
+import useFetchGet from "../../hooks/useFetchGet";
 import {
   Card,
   CardHeader,
@@ -16,7 +16,7 @@ import {
 
 const AdminPanel = () => {
   const { tg, fetchURL, user } = useTelegram();
-  const { data, loading, error } = useFetchData(
+  const { data, loading, error } = useFetchGet(
     `${fetchURL}/api/getusers`
   );
   useEffect(() => {
