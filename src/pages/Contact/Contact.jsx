@@ -3,8 +3,7 @@ import {
   FormControl,
   FormLabel,
   Textarea,
-  FormErrorMessage,
-  Button
+  FormErrorMessage
 } from "@chakra-ui/react";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
@@ -68,15 +67,16 @@ const Contact = () => {
       {({ setFieldValue }) => (
         <Form className="MainForm">
           <Text
-            fontSize="3xl"
+            fontSize="2xl"
             align="center"
             color={"var(--tg-theme-text-color)"}
           >
             Опишите вашу проблему
           </Text>
-          <Field name="message" validate={validateMessage}>
+          <Field name="message"  validate={validateMessage}>
             {({ field, form }) => (
               <FormControl
+                mt={"20px"}
                 isInvalid={form.errors.message && form.touched.message}
               >
                 <FormLabel color={"var(--tg-theme-text-color)"}>
@@ -96,13 +96,6 @@ const Contact = () => {
               </FormControl>
             )}
           </Field>
-          <Button
-            mt={4}
-            colorScheme='teal'
-            type='submit'
-          >
-            Submit
-          </Button>
         </Form>
       )}
     </Formik>
