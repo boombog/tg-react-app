@@ -9,6 +9,8 @@ import FAQ from './pages/FAQ/FAQ';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import useFetchGet from './hooks/useFetchGet';
 import Contact from './pages/Contact/Contact';
+import BannedBanner from './components/BannedBanner/BannedBanner';
+import MyCourses from './pages/MyCourses/MyCourses';
 
 function App() {
   const {tg, user, fetchURL} = useTelegram();
@@ -22,12 +24,14 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App no-scrollbar">
+        {data.userStatus === "blocked" ? <BannedBanner /> : ""}
         <Header />
         <Routes>
           <Route index element={<MainPage/>} />
           <Route path='/faq' element={<FAQ/>} />
           <Route path='/contact' element={<Contact/>} />
           {data.role === "admin" ? <Route path='/admin' element={<AdminPanel/>}/> : null}
+          <Route path='/mycourses' element={<MyCourses/>} />
           <Route element={<div>Страница не найдена</div>}/>
         </Routes>
       </div>

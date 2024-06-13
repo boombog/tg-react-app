@@ -16,32 +16,34 @@ const Contact = () => {
   const [message, setMessage] = useState("");
 
   const onSendData = useCallback(() => {
+    console.log("Кнопка была нажата");
     const data = {
       message: message,
       login: user?.username || "testmode",
       queryId: queryId,
     };
-    axios.post(`${fetchURL}/api/sendrequest/${user?.id || "666666"}`, JSON.stringify(data), {
+    console.log("Отправляются данные: ", data);
+    axios.post(`${fetchURL}/api/sendrequest/${user?.id || "666666"}`, data, {
         headers: {
           "Content-Type": "application/json",
           'ngrok-skip-browser-warning': 'true'
         },
       })
-      .then(response => response.json())
-      .then((response) => {
-        console.log("Успешно отправлено:", response.data);
-      })
       .catch((error) => {
-        console.error("Ошибка отправки:", error);
+        console.error("Ошибка отправки: ", error);
       });
 
-    onClose()
+    onClose();
   }, [onClose, message, user?.username, user?.id, queryId, fetchURL]);
 
   useEffect(() => {
-    tg.onEvent("MainButtonClicked", onSendData);
+    if (tg) {
+      tg.onEvent("mainButtonClicked", onSendData);
+    }
     return () => {
-      tg.offEvent("MainButtonClicked", onSendData);
+      if (tg) {
+        tg.offEvent("mainButtonClicked", onSendData);
+      }
     };
   }, [tg, onSendData]);
 
@@ -57,9 +59,11 @@ const Contact = () => {
   }
 
   useEffect(() => {
-    tg.MainButton.setParams({
-      text: "Отправить данные",
-    });
+    if (tg) {
+      tg.MainButton.setParams({
+        text: "Отправить данные",
+      });
+    }
   }, [tg]);
 
   return (
